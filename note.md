@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: wangqi
  * @Date: 2020-05-01 10:56:12
- * @LastEditTime: 2020-05-04 18:15:23
+ * @LastEditTime: 2020-05-06 00:02:52
  -->
 # npx 作用
     找到 node_modules/.bin/webpack 目录， 没有的话换系统环境变量的，在没有就给远程下载
@@ -36,8 +36,8 @@
     作用：file-loader：默认会把from的图片导入到指定的output目录中
         url-loader：主要是生成base64的作用
     导入方式： import videoPic from "./static/img/video.png";  require("./static/img/video.png");
-        使用这种方式的导入 webpack不论是使用 dev 还是 build 时webpack服务器内部会生成一张图片地址;
-        而直接使用 img.src = "./static/img/video.png" 方式则无法生成图片，就会报图片路径错误;
+        使用这种方式的导入 webpack不论是使用 dev 还是 build 时webpack服务器内部会根据图片生成一个MD5地址引用;
+        而直接使用 img.src = "./static/img/video.png" 方式则无法合理根据webpack原理生成图片能用的地址引用，就会报图片路径错误;
 --------------------------------------------
 <br/>
 

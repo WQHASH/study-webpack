@@ -1,0 +1,9 @@
+{
+    "name": "wq-pack",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "bin": {
+        "wq-pack": "./bin/wq-pack.js"
+    }
+}
