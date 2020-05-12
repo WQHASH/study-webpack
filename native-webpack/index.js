@@ -2,9 +2,12 @@
  * @Description: 
  * @Author: wangqi
  * @Date: 2020-05-05 21:59:09
- * @LastEditTime: 2020-05-07 20:41:53
+ * @LastEditTime: 2020-05-11 19:47:17
  */
 let result = require("./base/a.js");
+import { square } from "./src/util/calc.js";
+// let { calc } = require("./src/util/calc.js");
+
 console.log(result);
 
 
