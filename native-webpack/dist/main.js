@@ -112,11 +112,10 @@ eval("/*\r\n * @Description: \r\n * @Author: wangqi\r\n * @Date: 2020-05-05 21:5
 /*!******************!*\
   !*** ./index.js ***!
   \******************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(__dirname) {/* harmony import */ var _src_util_calc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/util/calc.js */ \"./src/util/calc.js\");\n/*\r\n * @Description: \r\n * @Author: wangqi\r\n * @Date: 2020-05-05 21:59:09\r\n * @LastEditTime: 2020-05-11 19:47:17\r\n */\nvar result = __webpack_require__(/*! ./base/a.js */ \"./base/a.js\");\n\n // let { calc } = require(\"./src/util/calc.js\");\n\nconsole.log(result);\n/**\r\n *  __dirname: 目的在于处理不同操作系统的反斜杠问题\r\n */\n\nvar _require = __webpack_require__(/*! path */ \"./node_modules/path-browserify/index.js\"),\n    resolve = _require.resolve;\n\nconsole.log(resolve(__dirname, \"src/index.js\"));\n/* WEBPACK VAR INJECTION */}.call(this, \"/\"))\n\n//# sourceURL=webpack:///./index.js?");
+eval("/* WEBPACK VAR INJECTION */(function(__dirname) {/*\r\n * @Description: \r\n * @Author: wangqi\r\n * @Date: 2020-05-05 21:59:09\r\n * @LastEditTime: 2020-05-13 15:28:56\r\n */\nvar result = __webpack_require__(/*! ./base/a.js */ \"./base/a.js\"); // import { square, cube } from \"./src/util/calc.js\";\n\n\nvar _require = __webpack_require__(/*! ./src/util/calc.js */ \"./src/util/calc.js\"),\n    square = _require.square;\n/**\r\n *  import { square, cube } from  \"\";  和 let { square } = require(); 的区别\r\n *      \r\n *      import导入的则分为：\r\n *          \r\n * \r\n *      require(): 方式只要使用, 拿到的对象为 module.exports导出的属性\r\n *      \r\n */\n// console.log(cube)\n// console.log(square)\n\n/**\r\n *  __dirname: 目的在于处理不同操作系统的反斜杠问题\r\n */\n\n\nvar _require2 = __webpack_require__(/*! path */ \"./node_modules/path-browserify/index.js\"),\n    resolve = _require2.resolve;\n\nconsole.log(resolve(__dirname, \"src/index.js\"));\n/* WEBPACK VAR INJECTION */}.call(this, \"/\"))\n\n//# sourceURL=webpack:///./index.js?");
 
 /***/ }),
 
@@ -146,18 +145,15 @@ eval("// shim for using process in browser\nvar process = module.exports = {};\n
 /*!**************************!*\
   !*** ./src/util/calc.js ***!
   \**************************/
-/*! exports provided: square, cube */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-eval("
-__webpack_require__.r(__webpack_exports__);
-\n/* harmony export (binding) */ 
-__webpack_require__.d(__webpack_exports__, \"square\", function() { return square; });
-__webpack_require__.d(__webpack_exports__, \"cube\", function() { return cube; });
-function square(x) {\n  return x * x;\n}
-function cube(x) {\n  return x * x * x;\n}
-\n\n // module.exports = {square, cube}\n\n//# sourceURL=webpack:///./src/util/calc.js?");
+eval("/*\r\n * @Description: 我是你爸爸\r\n * @Author: wangqixxx\r\n *
+ @Date: 2020-05-11 09:37:09\r\n * @LastEditTime: 2020-05-13 15:27:12\r\n */\n
+ function square(x) {\n  return x * x;\n}
+ \n\n
+ function cube(x) {\n  //我是你爸爸\n  return x * x * x;\n} // export { square, cube }\n\n\n
+ module.exports = {\n  square: square\n};\n\n//# sourceURL=webpack:///./src/util/calc.js?");
 
 /***/ })
 

@@ -1,8 +1,8 @@
 /*
- * @Description: 
- * @Author: wangqi
+ * @Description: 我是你爸爸
+ * @Author: wangqixxx
  * @Date: 2020-05-11 09:37:09
- * @LastEditTime: 2020-05-11 19:50:29
+ * @LastEditTime: 2020-05-13 16:39:06
  */
 
 function square(x) {
@@ -10,9 +10,10 @@ function square(x) {
 }
 
 function cube(x) {
+    //我是你爸爸
     return x * x * x;
 }
 
 export { square, cube }
-// module.exports = {square, cube}
+// module.exports = {square}
 
