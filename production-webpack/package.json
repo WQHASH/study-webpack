@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --config ./webpack.config.dev.js --open",
-    "build": "webpack --config ./webpack.config.prod.js"
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -40,6 +40,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
     "@babel/runtime": "^7.9.6",
+    "cross-env": "^7.0.2",
     "jquery": "^3.5.0",
     "moment": "^2.25.1"
   }

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: wangqi
  * @Date: 2020-05-02 23:05:02
- * @LastEditTime: 2020-05-03 19:33:10
+ * @LastEditTime: 2020-05-16 20:51:08
  */
 
 const { resolve } = require('path');
@@ -172,8 +172,15 @@ module.exports = {
             threads: 4,
             loaders: ['babel-loader']
         }),
+
+        // new webpack.DefinePlugin({
+        //     'process.env.NODE_ENV': JSON.stringify('production')
+        // }),
+        
         new webpack.ContextReplacementPlugin(/moment[\/\\]locale/, /(en|zh-cn)\.js/),
         // webpack自带版本插件
         // new webpack.BannerPlugin("make 2020 wq by"),
     ],
 }
+
+console.log("process.env.NODE_ENV 的值是(webpack.config.prod.js)："+ process.env.NODE_ENV)

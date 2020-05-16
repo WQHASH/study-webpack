@@ -1,8 +1,8 @@
 /*
- * @Description: 我是你爸爸
+ * @Description: 
  * @Author: wangqixxx
  * @Date: 2020-05-11 09:37:09
- * @LastEditTime: 2020-05-13 16:39:06
+ * @LastEditTime: 2020-05-14 11:01:36
  */
 
 function square(x) {
@@ -10,10 +10,24 @@ function square(x) {
 }
 
 function cube(x) {
-    //我是你爸爸
     return x * x * x;
 }
+let num = 110;
+let data = {
+    sname: "wq",
+    des: "xxx",
+}
+// default导出不存在引用关系
+setTimeout(() => {
+    data.sname = "wangqitya";
+    num = 555;
+}, 3000);
 
-export { square, cube }
+// export { num as default };
+// moren
+export default num;
+// export {num}
+
+// export { square, cube }
 // module.exports = {square}
 

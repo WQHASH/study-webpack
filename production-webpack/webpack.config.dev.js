@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: wangqi
  * @Date: 2020-05-02 23:05:02
- * @LastEditTime: 2020-05-03 21:24:52
+ * @LastEditTime: 2020-05-16 20:56:48
  */
 
 const { resolve } = require('path');
@@ -161,6 +161,10 @@ module.exports = {
             loaders: ['babel-loader']
         }),
 
+        // new webpack.DefinePlugin({
+        //     'process.env.NODE_ENV': JSON.stringify('development')
+        // }),
+
         // 忽略从moment 中引入 ./locale则会把该文件忽略掉 (*属于优化项)
         // new webpack.IgnorePlugin(/\.\/locale/, /moment/),
         new webpack.ContextReplacementPlugin(/moment[\/\\]locale/, /(en|zh-cn)\.js/),
@@ -171,3 +175,11 @@ module.exports = {
 
     ],
 }
+
+// "scripts": {
+//     "dev": "webpack-dev-server --config ./webpack.config.dev.js --mode development",
+//     "build": "webpack --config ./webpack.config.prod.js --mode production"
+//   },
+// "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.dev.js",
+// "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.prod.js"
+console.log("process.env.NODE_ENV 的值是(webpack.config.dev.js)："+ process.env.NODE_ENV)
