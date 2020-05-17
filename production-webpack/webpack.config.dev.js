@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: wangqi
  * @Date: 2020-05-02 23:05:02
- * @LastEditTime: 2020-05-16 20:56:48
+ * @LastEditTime: 2020-05-17 18:56:30
  */
 
 const { resolve } = require('path');
@@ -15,7 +15,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HappyPack = require('happypack');
 
 module.exports = {
-    mode: 'development',
+    mode: process.env.NODE_ENV == 'development' ? 'development' : 'production',
     entry: resolve("./src/index.js"),
     devtool: 'cheap-module-eval-source-map',
     output: {
@@ -162,7 +162,9 @@ module.exports = {
         }),
 
         // new webpack.DefinePlugin({
-        //     'process.env.NODE_ENV': JSON.stringify('development')
+        //     'process.env': {
+        //         'NODE_ENV': JSON.stringify('development'),
+        //     },
         // }),
 
         // 忽略从moment 中引入 ./locale则会把该文件忽略掉 (*属于优化项)
@@ -182,4 +184,14 @@ module.exports = {
 //   },
 // "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.dev.js",
 // "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.prod.js"
-console.log("process.env.NODE_ENV 的值是(webpack.config.dev.js)："+ process.env.NODE_ENV)
+// console.log("process.env.NODE_ENV 的值是(webpack.config.dev.js)：" + process.env.NODE_ENV)
+
+//-----------------------------------
+// .env;.env.development,.env.production这些文件针对的是vue环境下的配置, 而我们这里是针对 webpack配置,
+// 所以这些文件项目默认读取不到里边的属性
+// 关于该文件介绍: .env (类似公共配置) .env.development (开发) .env.production (上线); 先加载 .env文件, 然后以文件覆盖形式加载！
+// 该文件属性名必须以VUE_APP_开头，比如VUE_APP_XXX
+//-----------------------------------
+
+console.log("NODE_ENV名称:", process.env.NODE_ENV);
+console.log("VUE_APP_ENV名称:", process.env.VUE_APP_ENV);
