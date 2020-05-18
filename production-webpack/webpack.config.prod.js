@@ -2,11 +2,12 @@
  * @Description: 
  * @Author: wangqi
  * @Date: 2020-05-02 23:05:02
- * @LastEditTime: 2020-05-16 20:51:08
+ * @LastEditTime: 2020-05-18 22:58:01
  */
 
 const { resolve } = require('path');
 const webpack = require('webpack');
+
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // 压缩抽离后的js => 注意使用mini-css-extract-plugin插件时,尽管production模式下如果new TerserJSPlugin(); js代码任然不进行压缩
@@ -15,6 +16,8 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // 压缩抽离后的css
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+// 图片压缩
+const imagemin = require('imagemin');
 // 使用多线程打包
 const HappyPack = require('happypack');
 
@@ -88,7 +91,7 @@ module.exports = {
 
             },
             {
-                test: /\.(jpg|png|jpeg|gif|bmp)$/,
+                test: /\.(jpg|png|jpe?g|gif|bmp)$/i,
                 exclude: /node_modules/,
                 use: [
                     {
@@ -96,11 +99,35 @@ module.exports = {
                         // 做一个限制，当我们的图片小于2kb的时候，用base64来转换; 否则用file-loader产生真实的图片
                         options: {
                             // 输出正常的图片名称
-                            name: "assets/img/[name].[ext]",
+                            name: "assets/img/[name].[hash:8].[ext]",
                             // limit: 1  // 小于1字节的用base64  [1024byte == 1kb]
                             limit: 1 * 1024,
                             // 公共路径, 会在图片资源前加上统一的指定路径地址
                             publicPath: 'http://127.0.0.1:3000'
+                        }
+                    },
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 65
+                            },
+                            // optipng.enabled: false will disable optipng
+                            optipng: {
+                                enabled: false,
+                            },
+                            pngquant: {
+                                quality: [0.65, 0.90],
+                                speed: 4
+                            },
+                            gifsicle: {
+                                interlaced: false,
+                            },
+                            // the webp option will enable WEBP
+                            webp: {
+                                quality: 75
+                            }
                         }
                     }
                 ]
@@ -176,11 +203,11 @@ module.exports = {
         // new webpack.DefinePlugin({
         //     'process.env.NODE_ENV': JSON.stringify('production')
         // }),
-        
+
         new webpack.ContextReplacementPlugin(/moment[\/\\]locale/, /(en|zh-cn)\.js/),
         // webpack自带版本插件
         // new webpack.BannerPlugin("make 2020 wq by"),
     ],
 }
 
-console.log("process.env.NODE_ENV 的值是(webpack.config.prod.js)："+ process.env.NODE_ENV)
+console.log("process.env.NODE_ENV 的值是(webpack.config.prod.js)：" + process.env.NODE_ENV)

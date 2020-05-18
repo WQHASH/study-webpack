@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: wangqi
  * @Date: 2020-05-02 23:04:54
- * @LastEditTime: 2020-05-17 17:12:07
+ * @LastEditTime: 2020-05-18 23:06:13
  */
 import './index.less'
 // import moment from 'moment';
@@ -14,7 +14,7 @@ console.log("入口文件");
 console.log("----------");
 // let time = moment("20111031", "YYYYMMDD").fromNow();
 // console.log(time, "moment");
-console.log("process.env.NODE_ENV 的值是(webpack.config.dev.js)："+ process.env.NODE_ENV);
+console.log("process.env.NODE_ENV 的值是(webpack.config.dev.js)：" + process.env.NODE_ENV);
 
 let box = document.querySelector(".box");
 let btn = document.createElement("button");

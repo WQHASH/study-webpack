@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: wangqi
  * @Date: 2020-05-02 23:05:02
- * @LastEditTime: 2020-05-17 18:56:30
+ * @LastEditTime: 2020-05-18 23:03:41
  */
 
 const { resolve } = require('path');
@@ -85,7 +85,7 @@ module.exports = {
 
             },
             {
-                test: /\.(jpg|png|jpeg|gif|bmp)$/,
+                test: /\.(jpg|png|jpe?g|gif|bmp)$/i,
                 exclude: /node_modules/,
                 use: [
                     {
@@ -93,11 +93,35 @@ module.exports = {
                         // 做一个限制，当我们的图片小于2kb的时候，用base64来转换; 否则用file-loader产生真实的图片
                         options: {
                             // 输出正常的图片名称
-                            name: "assets/img/[name].[ext]",
+                            name: "assets/img/[name].[hash:8].[ext]",
                             // limit: 1  // 小于1字节的用base64  [1024byte == 1kb]
                             limit: 1 * 1024,
                             // 公共路径, 会在图片资源前加上统一的指定路径地址
                             publicPath: 'http://127.0.0.1:3000'
+                        },
+                    },
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 65
+                            },
+                            // optipng.enabled: false will disable optipng
+                            optipng: {
+                                enabled: false,
+                            },
+                            pngquant: {
+                                quality: [0.65, 0.90],
+                                speed: 4
+                            },
+                            gifsicle: {
+                                interlaced: false,
+                            },
+                            // the webp option will enable WEBP
+                            webp: {
+                                quality: 75
+                            }
                         }
                     }
                 ]
