@@ -45,6 +45,6 @@
     "@babel/runtime": "^7.9.6",
     "express": "^4.17.1",
     "jquery": "^3.5.0",
-    "moment": "^2.25.1"
+    "moment": "^2.29.4"
   }
 }
