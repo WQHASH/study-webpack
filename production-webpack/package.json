@@ -43,6 +43,6 @@
     "cross-env": "^7.0.2",
     "img-loader": "^3.0.1",
     "jquery": "^3.5.0",
-    "moment": "^2.25.1"
+    "moment": "^2.29.4"
   }
 }
